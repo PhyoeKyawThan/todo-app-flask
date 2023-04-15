@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block title %}
+Make
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <div class="head p-3 mb-3 border-bottom text-center">Your Todo</div>
+    <form action="/add_todo" method="post">
+        <div class="mb-3">
+            <label for="title" class="from-label">Title</label>
+            <input type="text" name="title" id="title" placeholder="Title" class="form-control">
+        </div>
+        <div class="mb-3">
+            <label for="todo" class="form-label">Task</label>
+            <textarea name="todos" id="todo" placeholder="Enter your tasks" class="form-control" cols="30" rows="5"></textarea>
+        </div>
+
+        <input type="button" value="Add" class="btn btn-primary">
+    </form>
+</div>
+
+{% endblock%}
