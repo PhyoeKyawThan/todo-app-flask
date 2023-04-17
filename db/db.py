@@ -5,20 +5,31 @@ metadata = MetaData()
 
 #creating a database 
 class DB:
-    table = Table('todos_data', metadata,
+    
+    def __init__(self) -> None:
+        self.table = Table('todos_data', metadata,
                   Column('id', Integer ,primary_key=True),
                   Column('title', String(50) ,nullable=False),
                   Column('todo', String(255), nullable=False)
-                  )
-    conn = engine.connect()
-    def __init__(self, title, todo) -> None:
-        self.data: list = [
-            {'title': self.title, 'todo': self.todo}
-        ]
-        self.conn.execute(self.table.insert(), self.data)
-        self.conn.commit()
-        self.conn.close()
+                  , autoload_with=engine)
+        
+    def insert(self, data):
+        conn = engine.connect()
+        conn.execute(self.table.insert(), data)
+        conn.commit()
+        conn.close()
+        return 'Successfully Insert datas'
     
     def delete(self, id):
-        sle
+        conn = engine.connect()
+        conn.execute(self.table.delete().where(self.table.c.id == id))
+        conn.commit()
+        conn.close()
+        return f'Deleted'
 
+    def __repr__(self) -> str:
+        return 'successfully commit'
+
+if __name__ == '__main__':
+    db = DB()
+    print(db.delete(3))
