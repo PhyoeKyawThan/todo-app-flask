@@ -1,6 +1,6 @@
 from sqlalchemy import create_engine, Table, Column, MetaData, String, Integer, select
 
-engine = create_engine("mysql://root:Domak9090@127.0.0.1:3306/todoDatas")
+engine = create_engine("sqlite:///todo.db")
 metadata = MetaData()
 
 #creating a database 
@@ -49,6 +49,4 @@ class DB:
 
 if __name__ == '__main__':
     db = DB()
-    for data in db.todo_lists():
-        print(data)
     

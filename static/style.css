@@ -4,3 +4,7 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-weight: bold;
 }
+
+.show_data input[type=text]{
+    padding: 0;
+}
