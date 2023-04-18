@@ -17,8 +17,33 @@ Make
             <textarea name="todos" id="todo" placeholder="Enter your tasks" class="form-control" cols="30" rows="5"></textarea>
         </div>
 
-        <input type="button" value="Add" class="btn btn-primary">
-    </form>
+        <input type="submit" value="Add" class="btn btn-primary mb-3">
+        </form>
+        <div class="container">
+            <div class="row">
+                <div class="col">No.</div>
+                <div class="col">Title</div>
+                <div class="col">Todos</div>
+                <div class="col"></div>
+            </div>
+            {% for data in lists %}
+            <form action="/update" method="post" class="show_data">
+                <div class="row">
+                    <div class="col">{{ id }}</div>
+                    <div class="col">
+                        <input type="text" name="update_title" id="" value="{{ data[1] }}" class="form-control border-0">
+                    </div>
+                    <div class="col">
+                        <input type="text" name="update_todo" id="" value="{{ data[2] }}" class="form-control border-0">
+                    </div>
+                    <div class="col">
+                        <input type="submit" value="UPDATE" class="btn btn-primary">
+                        <a href="{{ url_for('delete', id=data[0]) }}" class="btn btn-danger">DELETE</a>
+                    </div>
+                </div>
+            </form>
+            
+    {% endfor %}
 </div>
 
-{% endblock%}
+{% endblock %}
